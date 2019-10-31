@@ -1,16 +1,17 @@
 #' Cumulative uncertainty
 #'
 #' This function performs uncertainty decomposition based on the cumulative uncertainty.
-#' @param data a data frame containing scenarios(factor or character) for each stages and the variable of interest(numeric).
-#' data should contain all combinations of scenarios.
+#' @param data a data frame containing models(factor or character) for each stages and the variable of interest(numeric).
+#' data should contain all combinations of models.
 #' @param var_name the name of the variable of interest
 #' @param stages names of the stages in the modeling chain. should be ordered by the order of the modeling chain
 #' @param U a function that returns uncertainty such as range and variance of a given numeric vector.
-#' This package have built-in uncertainty functions var0() and drange(). Default is var0().
-#' @return summary of uncertainties
+#' This package have built-in uncertainty functions U_var(), U_mad() and U_range(). Default is U_var().
+#' @return stage wise uncertainties
 #' @import stats
 #' @export
 #' @examples
+#' set.seed(0)
 #' stage1 <- LETTERS[1:3]
 #' stage2 <- LETTERS[1:2]
 #' stage3 <- LETTERS[1:4]
@@ -19,15 +20,14 @@
 #'                     stage2=stage2,
 #'                     stage3=stage3)
 #' data <- cbind(data, y)
-#' # cum_uncertainty(data,"y", names(data)[-4])
-#' # cum_uncertainty(data,"y", names(data)[-4],drange)
+#'
+#' UD_cum_stage(data, "y", names(data)[-4], U_var)
+#' UD_cum_stage(data, "y", names(data)[-4], U_mad)
+#' UD_cum_stage(data, "y", names(data)[-4], U_range)
 
-
-cum_uncertainty<-function(data, var_name,
-                          stages=setdiff(names(data),var_name),
-                          U=var0){
-  .Deprecated(old = "cum_uncertainty", new = "UD_cum_stage")
-  
+UD_cum_stage<-function(data, var_name,
+                       stages=setdiff(names(data),var_name),
+                       U=U_var){
   nstage <- length(stages)
   data[stages] <- lapply(data[stages], as.factor)
   
@@ -40,13 +40,16 @@ cum_uncertainty<-function(data, var_name,
   }
   cu[nstage] <- U(data[[ var_name ]])
   u_cum = c(cu[1], diff(cu))
-  prop = u_cum/cu[nstage]
+  names(u_cum) = stages
+  names(cu) = stages
   
-  result <- data.frame(stage=stages,
-                       cum_uncer=cu,
-                       stage_uncer=u_cum,
-                       Prop=prop)
+  tot_unc = cu[nstage]
+  result <- list(unc=u_cum,
+                 cum_unc=cu,
+                 tot_unc=tot_unc,
+                 stage=stages)
   
+  class(result) = "UD_stage"
   return(result)
 }
 

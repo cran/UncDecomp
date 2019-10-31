@@ -17,5 +17,5 @@ This function returns the population variance of a given vector.
 }
 \examples{
 (x <- rnorm(5))
-var0(x)
+# var0(x)
 }

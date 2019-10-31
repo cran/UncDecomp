@@ -6,6 +6,10 @@
 #' @export
 #' @examples
 #' (x <- rnorm(5))
-#' var0(x)
+#' # var0(x)
 
-var0 <- function(x){mean((x-mean(x))^2)}
+var0 <- function(x){
+  .Deprecated(old = "var0", new = "U_var")
+  mean((x-mean(x))^2)
+}
+

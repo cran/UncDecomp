@@ -6,6 +6,9 @@
 #' @export
 #' @examples
 #' (x <- rnorm(5))
-#' drange(x)
+#' #drange(x)
 
-drange <- function(x){diff(range(x))}
+drange <- function(x){
+  .Deprecated(old = "drange", new = "U_range")
+  diff(range(x))
+}

@@ -17,5 +17,5 @@ This function returns the difference of maximum and minimum of a given vector.
 }
 \examples{
 (x <- rnorm(5))
-drange(x)
+#drange(x)
 }
