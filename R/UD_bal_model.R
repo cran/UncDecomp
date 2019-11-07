@@ -1,4 +1,4 @@
-#' Model wise balanced uncertainty
+#' Model-wise balanced uncertainty
 #'
 #' This function performs the balanced uncertainty decomposition. 
 #' In balanced uncertainty decomposition, we assume that the total uncertainty decomposes into the uncertainty of all main effects and all orders of interaction between models.
@@ -10,9 +10,9 @@
 #' @param stages names of the stages of interest.
 #' @param u a function that returns uncertainty of each element of the vector like difference or square of difference between each element and summary statistics.
 #' This package have built-in uncertainty functions u_var(), u_mad() and u_range(). Default is u_var().
-#' @param flist lists of functions that summarize vector like mean or median.
+#' @param flist list of functions that summarize vector like mean or median.
 #' This package have built-in uncertainty functions flist_var(), flist_mad() and flist_range(). Default is flist_var().
-#' @return model wise uncertainties
+#' @return model-wise uncertainties(UD_model class)
 #' @import stats
 #' @export
 #' @examples
@@ -24,13 +24,14 @@
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
 #'
-#' UD_bal_model_var <- UD_bal_model(data, "y", names(data)[-4], u_var, flist_var)
+#' UD_bal_model_var <- UD_bal_model(data, "y", stages, u_var, flist_var)
 #' UD_bal_model_var
-#' UD_bal_model_mad <- UD_bal_model(data, "y", names(data)[-4], u_mad, flist_mad)
+#' UD_bal_model_mad <- UD_bal_model(data, "y", stages, u_mad, flist_mad)
 #' UD_bal_model_mad 
-#' UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+#' UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 #' UD_bal_model_range 
 #'
 #' UD_bal_stage_var <- UD_model2stage(UD_bal_model_var)

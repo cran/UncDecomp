@@ -2,7 +2,7 @@
 % Please edit documentation in R/stage_uncertainty.R
 \name{stage_uncertainty}
 \alias{stage_uncertainty}
-\title{Stage uncertainty}
+\title{Stage uncertainty(DEPRECATED)}
 \usage{
 stage_uncertainty(data, var_name, stages = setdiff(names(data),
   var_name))
@@ -35,5 +35,6 @@ data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
 data <- cbind(data, y)
+# stage_uncertainty() is deprecated. Use UD_ANOVA_stage()
 # stage_uncertainty(data,"y", names(data)[-4])
 }

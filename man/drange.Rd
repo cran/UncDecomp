@@ -2,7 +2,7 @@
 % Please edit documentation in R/drange.R
 \name{drange}
 \alias{drange}
-\title{Range}
+\title{Range(DEPRECATED)}
 \usage{
 drange(x)
 }
@@ -17,5 +17,6 @@ This function returns the difference of maximum and minimum of a given vector.
 }
 \examples{
 (x <- rnorm(5))
-#drange(x)
+# drange() is deprecated. Use U_range()
+# drange(x)
 }

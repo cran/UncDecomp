@@ -7,10 +7,10 @@
 UD_model2stage(UD)
 }
 \arguments{
-\item{UD}{model wise uncertainty, output of function that creates model wise uncertainty such as UD_bal_model and UD_ANOVA_model}
+\item{UD}{model wise uncertainty(UD_model class), output of function that returns model wise uncertainty such as UD_bal_model and UD_ANOVA_model}
 }
 \value{
-stage wise uncertainties
+stage wise uncertainties(UD_stage class)
 }
 \description{
 This function converts model uncertainty to stage uncertainty by summing by stage.
@@ -24,13 +24,14 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
 
-UD_bal_model_var <- UD_bal_model(data, "y", names(data)[-4], u_var, flist_var)
+UD_bal_model_var <- UD_bal_model(data, "y", stages, u_var, flist_var)
 UD_bal_model_var
-UD_bal_model_mad <- UD_bal_model(data, "y", names(data)[-4], u_mad, flist_mad)
+UD_bal_model_mad <- UD_bal_model(data, "y", stages, u_mad, flist_mad)
 UD_bal_model_mad 
-UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 UD_bal_model_range 
 
 UD_bal_stage_var <- UD_model2stage(UD_bal_model_var)

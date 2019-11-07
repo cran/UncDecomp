@@ -1,4 +1,4 @@
-#' Cumulative uncertainty
+#' Cumulative uncertainty(DEPRECATED)
 #'
 #' This function performs uncertainty decomposition based on the cumulative uncertainty.
 #' @param data a data frame containing scenarios(factor or character) for each stages and the variable of interest(numeric).
@@ -19,6 +19,7 @@
 #'                     stage2=stage2,
 #'                     stage3=stage3)
 #' data <- cbind(data, y)
+#' # cum_uncertainty() is deprecated. Use UD_cum_stage()
 #' # cum_uncertainty(data,"y", names(data)[-4])
 #' # cum_uncertainty(data,"y", names(data)[-4],drange)
 

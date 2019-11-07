@@ -1,12 +1,12 @@
-#' Stage uncertainty based on the second order interaction ANOVA
+#' Stage-wise uncertainty based on the second order interaction ANOVA
 #'
 #' This function performs uncertainty decomposition by stage based on the second order interaction ANOVA model.
 #' The uncertainty from interaction effect from two stages is divided equally and assigned to each stage.
-#' @param data a data frame containing scenarios(factor or character) for each stages and the variable of interest(numeric).
-#' data should contain all combinations of scenarios. columns scenarios
+#' @param data a data frame containing models(factor or character) for each stages and the variable of interest(numeric).
+#' data should contain all combinations of models.
 #' @param var_name the name of the variable of interest
 #' @param stages names of the stages in the model.
-#' @return List including uncertainties of stages, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages.
+#' @return List(UD_stage class) including uncertainties of stages, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages.
 #' @import stats
 #' @export
 #' @examples
@@ -18,8 +18,9 @@
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
-#' UD_ANOVA_stage(data,"y", names(data)[-4])
+#' UD_ANOVA_stage(data,"y", stages)
 
 UD_ANOVA_stage<-function(data, var_name,
                          stages=setdiff(names(data),var_name)){
@@ -58,7 +59,7 @@ UD_ANOVA_stage<-function(data, var_name,
   
   result <- list(unc=stage_uncer,
                  main_unc=main_uncer,
-                 int_unc=int_uncer,
+                 int_unc=uncer_from_int,
                  nat_unc=natural_uncer,
                  tot_unc=tot_uncer,
                  stage=stages)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/var0.R
 \name{var0}
 \alias{var0}
-\title{Variance}
+\title{Variance(DEPRECATED)}
 \usage{
 var0(x)
 }
@@ -17,5 +17,6 @@ This function returns the population variance of a given vector.
 }
 \examples{
 (x <- rnorm(5))
+# var0() is deprecated. Use U_var()
 # var0(x)
 }

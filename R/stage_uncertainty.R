@@ -1,4 +1,4 @@
-#' Stage uncertainty
+#' Stage uncertainty(DEPRECATED)
 #'
 #' This function performs uncertainty decomposition by stage based on the second order interaction ANOVA model.
 #' The uncertainty from interaction effect from two stages is divided equally and assigned to each stage.
@@ -22,6 +22,7 @@
 #'                     stage2=stage2,
 #'                     stage3=stage3)
 #' data <- cbind(data, y)
+#' # stage_uncertainty() is deprecated. Use UD_ANOVA_stage()
 #' # stage_uncertainty(data,"y", names(data)[-4])
 
 stage_uncertainty<-function(data, var_name,

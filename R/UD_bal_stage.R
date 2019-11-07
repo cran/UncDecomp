@@ -1,4 +1,4 @@
-#' Stage wise balanced uncertainty
+#' Stage-wise balanced uncertainty
 #'
 #' This function performs the balanced uncertainty decomposition. 
 #' In balanced uncertainty decomposition, we assume that the total uncertainty decomposes into the uncertainty of all main effects and all orders of interaction between stages.
@@ -10,7 +10,7 @@
 #' @param stages names of the stages of interest.
 #' @param U a function that returns uncertainty such as range and variance of a given numeric vector.
 #' This package have built-in uncertainty functions U_var(), U_mad() and U_range(). Default is U_var().
-#' @return stage wise uncertainties
+#' @return stage-wise uncertainties(UD_stage class)
 #' @import stats
 #' @export
 #' @examples
@@ -22,10 +22,11 @@
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
-#' UD_bal_stage(data, "y", names(data)[-4], U_var)
-#' UD_bal_stage(data, "y", names(data)[-4], U_mad)
-#' UD_bal_stage(data, "y", names(data)[-4], U_range)
+#' UD_bal_stage(data, "y", stages, U_var)
+#' UD_bal_stage(data, "y", stages, U_mad)
+#' UD_bal_stage(data, "y", stages, U_range)
 
 
 

@@ -2,24 +2,24 @@
 % Please edit documentation in R/UD_ANOVA_model.R
 \name{UD_ANOVA_model}
 \alias{UD_ANOVA_model}
-\title{Scenario uncertainty based on the second order interaction ANOVA}
+\title{Model-wise uncertainty based on the second order interaction ANOVA}
 \usage{
 UD_ANOVA_model(data, var_name, stages = setdiff(names(data), var_name))
 }
 \arguments{
-\item{data}{a data frame containing scenarios(factor or character) for each stages and the variable of interest(numeric).
-data should contain all combinations of scenarios.}
+\item{data}{a data frame containing models(factor or character) for each stages and the variable of interest(numeric).
+data should contain all combinations of models.}
 
 \item{var_name}{the name of the variable of interest}
 
 \item{stages}{names of the stages of interest.}
 }
 \value{
-List including uncertainties of models, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages and models
+List(UD_model class) including uncertainties of models, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages and models
 }
 \description{
-This function performs uncertainty decomposition by scenario based on the second order interaction ANOVA model.
-The uncertainty from interaction effect from two scenarios is divided equally and assigned to each scenario.
+This function performs uncertainty decomposition by model based on the second order interaction ANOVA model.
+The uncertainty from interaction effect from two models is divided equally and assigned to each model.
 }
 \examples{
 set.seed(0)
@@ -30,8 +30,10 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
-UD_ANOVA_model <- UD_ANOVA_model(data, "y", names(data)[-4])
+
+UD_ANOVA_model <- UD_ANOVA_model(data, "y", stages)
 UD_ANOVA_model
 UD_ANOVA_stage <- UD_model2stage(UD_ANOVA_model)
 UD_ANOVA_stage

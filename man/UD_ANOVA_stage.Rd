@@ -2,20 +2,20 @@
 % Please edit documentation in R/UD_ANOVA_stage.R
 \name{UD_ANOVA_stage}
 \alias{UD_ANOVA_stage}
-\title{Stage uncertainty based on the second order interaction ANOVA}
+\title{Stage-wise uncertainty based on the second order interaction ANOVA}
 \usage{
 UD_ANOVA_stage(data, var_name, stages = setdiff(names(data), var_name))
 }
 \arguments{
-\item{data}{a data frame containing scenarios(factor or character) for each stages and the variable of interest(numeric).
-data should contain all combinations of scenarios. columns scenarios}
+\item{data}{a data frame containing models(factor or character) for each stages and the variable of interest(numeric).
+data should contain all combinations of models.}
 
 \item{var_name}{the name of the variable of interest}
 
 \item{stages}{names of the stages in the model.}
 }
 \value{
-List including uncertainties of stages, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages.
+List(UD_stage class) including uncertainties of stages, uncertainties from main effects, uncertainties from interaction, total uncertainty, names of stages.
 }
 \description{
 This function performs uncertainty decomposition by stage based on the second order interaction ANOVA model.
@@ -30,6 +30,7 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
-UD_ANOVA_stage(data,"y", names(data)[-4])
+UD_ANOVA_stage(data,"y", stages)
 }

@@ -5,7 +5,7 @@
 ##' @name UDtable
 ##' @rdname UDtable
 ##'
-#' @param UD model wise uncertainty or stage wise uncertainty
+#' @param UD model-wise uncertainty or stage-wise uncertainty
 #' @param include.nat If include.nat is TRUE and UD has nat_unc, create a table containing it.
 #' @param include.tot If include.tot is TRUE, create a table containing it.
 #' @param ... further arguments passed to or from other methods. include.nat or include.tot
@@ -21,9 +21,10 @@
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
 #'
-#' UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+#' UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 #' UD_bal_model_range 
 #' 
 #' UD_bal_stage_range <- UD_model2stage(UD_bal_model_range)

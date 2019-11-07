@@ -2,7 +2,7 @@
 % Please edit documentation in R/scenario_uncertainty.R
 \name{scenario_uncertainty}
 \alias{scenario_uncertainty}
-\title{Scenario uncertainty}
+\title{Scenario uncertainty(DEPRECATED)}
 \usage{
 scenario_uncertainty(data, var_name, stages = setdiff(names(data),
   var_name))
@@ -35,5 +35,6 @@ data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
 data <- cbind(data, y)
+# scenario_uncertainty() is deprecated. Use UD_ANOVA_model()
 # scenario_uncertainty(data,"y", names(data)[-4])
 }

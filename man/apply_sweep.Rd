@@ -25,12 +25,12 @@ msweep(X, MARGIN, STATS, FUN, ...)
 \item{STATS}{the summary statistic array which is to be swept out. For msweep(), list of summary statistic array.}
 }
 \value{
-If each call to FUN returns a vector of length n, then apply returns an array of dimension c(n, dim(X)[MARGIN]) if n > 1. If n equals 1, apply returns a scalar if MARGIN has length 0, a vector if MARGIN has length 1 and an array of dimension dim(X)[MARGIN] otherwise.
+If each call to FUN returns a vector of length n, then apply() returns an array of dimension c(n, dim(X)[MARGIN]) if n > 1. If n equals 1, apply() returns a scalar if MARGIN has length 0, a vector if MARGIN has length 1 and an array of dimension dim(X)[MARGIN] otherwise.
 sweep0() and msweep() return an array with the same shape as x, but with the summary statistics swept out.
 }
 \description{
-Slightly modified version of apply() and sweep(). apply0() and sweep0() are modificationd of apply() and sweep() so that they can be used when the length(MARGIN) is zero. 
-msweep () is a modification of sweep () so that it can be used when function receives multiple summary statistic.
+Slightly modified version of apply() and sweep(). apply0() and sweep0() are modification of apply() and sweep() so that they can be used when the length(MARGIN) is zero. 
+msweep() is a modification of sweep() so that it can be used when function receives multiple summary statistic.
 }
 \examples{
 set.seed(0)

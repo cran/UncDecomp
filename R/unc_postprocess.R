@@ -6,7 +6,7 @@
 ##' @name unc_postprocess
 ##' @rdname unc_postprocess
 ##'
-##' @param UD model wise uncertainty or stage wise uncertainty
+##' @param UD model-wise uncertainty or stage-wise uncertainty
 ##' @param lambda_list a numeric vector that adjust the degree to which uncertainties and average uncertainty are close.
 ##' @param prop target proportion of least uncertainty
 ##'
@@ -22,13 +22,14 @@ NULL
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
 #'
-#' UD_bal_model_var <- UD_bal_model(data, "y", names(data)[-4], u_var, flist_var)
+#' UD_bal_model_var <- UD_bal_model(data, "y", stages, u_var, flist_var)
 #' UD_bal_model_var
-#' UD_bal_model_mad <- UD_bal_model(data, "y", names(data)[-4], u_mad, flist_mad)
+#' UD_bal_model_mad <- UD_bal_model(data, "y", stages, u_mad, flist_mad)
 #' UD_bal_model_mad 
-#' UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+#' UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 #' UD_bal_model_range 
 #'
 #' UD_bal_stage_var <- UD_model2stage(UD_bal_model_var)

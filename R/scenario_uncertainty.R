@@ -1,4 +1,4 @@
-#' Scenario uncertainty
+#' Scenario uncertainty(DEPRECATED)
 #'
 #' This function performs uncertainty decomposition by scenario based on the second order interaction ANOVA model.
 #' The uncertainty from interaction effect from two scenarios is divided equally and assigned to each scenario.
@@ -22,6 +22,7 @@
 #'                     stage2=stage2,
 #'                     stage3=stage3)
 #' data <- cbind(data, y)
+#' # scenario_uncertainty() is deprecated. Use UD_ANOVA_model()
 #' # scenario_uncertainty(data,"y", names(data)[-4])
 
 scenario_uncertainty<-function(data, var_name,

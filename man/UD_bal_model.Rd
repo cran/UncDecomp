@@ -2,7 +2,7 @@
 % Please edit documentation in R/UD_bal_model.R
 \name{UD_bal_model}
 \alias{UD_bal_model}
-\title{Model wise balanced uncertainty}
+\title{Model-wise balanced uncertainty}
 \usage{
 UD_bal_model(data, var_name, stages, u = u_var, flist = flist_var)
 }
@@ -17,11 +17,11 @@ data should contain all combinations of models.}
 \item{u}{a function that returns uncertainty of each element of the vector like difference or square of difference between each element and summary statistics.
 This package have built-in uncertainty functions u_var(), u_mad() and u_range(). Default is u_var().}
 
-\item{flist}{lists of functions that summarize vector like mean or median.
+\item{flist}{list of functions that summarize vector like mean or median.
 This package have built-in uncertainty functions flist_var(), flist_mad() and flist_range(). Default is flist_var().}
 }
 \value{
-model wise uncertainties
+model-wise uncertainties(UD_model class)
 }
 \description{
 This function performs the balanced uncertainty decomposition. 
@@ -37,13 +37,14 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
 
-UD_bal_model_var <- UD_bal_model(data, "y", names(data)[-4], u_var, flist_var)
+UD_bal_model_var <- UD_bal_model(data, "y", stages, u_var, flist_var)
 UD_bal_model_var
-UD_bal_model_mad <- UD_bal_model(data, "y", names(data)[-4], u_mad, flist_mad)
+UD_bal_model_mad <- UD_bal_model(data, "y", stages, u_mad, flist_mad)
 UD_bal_model_mad 
-UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 UD_bal_model_range 
 
 UD_bal_stage_var <- UD_model2stage(UD_bal_model_var)

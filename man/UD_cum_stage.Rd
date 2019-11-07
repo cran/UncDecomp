@@ -2,7 +2,7 @@
 % Please edit documentation in R/UD_cum_stage.R
 \name{UD_cum_stage}
 \alias{UD_cum_stage}
-\title{Cumulative uncertainty}
+\title{Stage-wise uncertainty based on cumulative uncertainty}
 \usage{
 UD_cum_stage(data, var_name, stages = setdiff(names(data), var_name),
   U = U_var)
@@ -19,7 +19,7 @@ data should contain all combinations of models.}
 This package have built-in uncertainty functions U_var(), U_mad() and U_range(). Default is U_var().}
 }
 \value{
-stage wise uncertainties
+stage-wise uncertainties(UD_stage class)
 }
 \description{
 This function performs uncertainty decomposition based on the cumulative uncertainty.
@@ -33,9 +33,10 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
 
-UD_cum_stage(data, "y", names(data)[-4], U_var)
-UD_cum_stage(data, "y", names(data)[-4], U_mad)
-UD_cum_stage(data, "y", names(data)[-4], U_range)
+UD_cum_stage(data, "y", stages, U_var)
+UD_cum_stage(data, "y", stages, U_mad)
+UD_cum_stage(data, "y", stages, U_range)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/UD_bal_stage.R
 \name{UD_bal_stage}
 \alias{UD_bal_stage}
-\title{Stage wise balanced uncertainty}
+\title{Stage-wise balanced uncertainty}
 \usage{
 UD_bal_stage(data, var_name, stages, U = U_var)
 }
@@ -18,7 +18,7 @@ data should contain all combinations of models.}
 This package have built-in uncertainty functions U_var(), U_mad() and U_range(). Default is U_var().}
 }
 \value{
-stage wise uncertainties
+stage-wise uncertainties(UD_stage class)
 }
 \description{
 This function performs the balanced uncertainty decomposition. 
@@ -34,8 +34,9 @@ y <- rnorm(3*2*4)
 data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
+stages <- names(data)
 data <- cbind(data, y)
-UD_bal_stage(data, "y", names(data)[-4], U_var)
-UD_bal_stage(data, "y", names(data)[-4], U_mad)
-UD_bal_stage(data, "y", names(data)[-4], U_range)
+UD_bal_stage(data, "y", stages, U_var)
+UD_bal_stage(data, "y", stages, U_mad)
+UD_bal_stage(data, "y", stages, U_range)
 }

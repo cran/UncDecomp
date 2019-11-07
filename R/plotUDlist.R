@@ -6,8 +6,8 @@
 ##' @name plotUDlist
 ##' @rdname plotUDlist
 ##'
-##' @param x output of ppud
-##' @param lwd line with in plot
+##' @param x output of ppud(UD_list class)
+##' @param lwd line width in plot
 ##' @param ... further arguments passed to or from other methods.
 ##'
 ##' @return ggplot showing how the result of ppud changes as lambda increases
@@ -20,9 +20,10 @@
 #' data <- expand.grid(stage1=stage1,
 #'                     stage2=stage2,
 #'                     stage3=stage3)
+#' stages <- names(data)
 #' data <- cbind(data, y)
 #'
-#' UD_bal_model_range <- UD_bal_model(data, "y", names(data)[-4], u_range, flist_range)
+#' UD_bal_model_range <- UD_bal_model(data, "y", stages, u_range, flist_range)
 #' UD_bal_model_range 
 #'
 #' UD_bal_stage_range <- UD_model2stage(UD_bal_model_range)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cum_uncertainty.R
 \name{cum_uncertainty}
 \alias{cum_uncertainty}
-\title{Cumulative uncertainty}
+\title{Cumulative uncertainty(DEPRECATED)}
 \usage{
 cum_uncertainty(data, var_name, stages = setdiff(names(data), var_name),
   U = var0)
@@ -33,6 +33,7 @@ data <- expand.grid(stage1=stage1,
                     stage2=stage2,
                     stage3=stage3)
 data <- cbind(data, y)
+# cum_uncertainty() is deprecated. Use UD_cum_stage()
 # cum_uncertainty(data,"y", names(data)[-4])
 # cum_uncertainty(data,"y", names(data)[-4],drange)
 }
